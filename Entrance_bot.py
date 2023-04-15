@@ -14,7 +14,7 @@ def convert_to_audio(text):
 while True:
     success, img = cap.read()
     for QRCode in decode(img):
-        qrcode = QRCode.data.decode('utf-8')
+        qrcode = QRCode.data.decode('utf-8') 
         name = qrcode
         pts = np.array([QRCode.polygon],np.int32)
         pts = pts.reshape((-1,1,2))
@@ -22,9 +22,9 @@ while True:
         
         if name:
             convert_to_audio(name)
-            playsound('textaudio.mp3')
-            os.remove("textaudio.mp3")
-            name= ""
+            playsound('textaudio.mp3')    
+            os.remove("textaudio.mp3")    #delete mp3 file for create new one
+            name= ""                      #blank string for remove current data & create new data
         
     cv2.imshow("Result",img)
     cv2.waitKey(1)
